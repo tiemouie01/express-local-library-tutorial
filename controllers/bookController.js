@@ -1,6 +1,6 @@
-const Book = require("../models/book");
-const Author = require("../models/author");
 const Genre = require("../models/genre");
+const Author = require("../models/author");
+const Book = require("../models/book");
 const BookInstance = require("../models/bookinstance");
 const asyncHandler = require("express-async-handler");
 
@@ -42,7 +42,24 @@ exports.book_list = asyncHandler(async (req, res, next) => {
 
 // Display detail page for a specific book.
 exports.book_detail = asyncHandler(async (req, res, next) => {
-  res.send(`NOT IMPLEMENTED: Book detail: ${req.params.id}`);
+  // Get details of books, book instances for specific book
+  const [book, bookInstances] = await Promise.all([
+    Book.findById(req.params.id).populate("author").exec(),
+    BookInstance.find({ book: req.params.id }).exec(),
+  ]);
+
+  if (book === null) {
+    // No results.
+    const err = new Error("Book not found");
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render("book_detail", {
+    title: book.title,
+    book: book,
+    book_instances: bookInstances,
+  });
 });
 
 // Display book create form on GET.

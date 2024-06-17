@@ -113,9 +113,7 @@ exports.author_delete_get = asyncHandler(async (req, res, next) => {
     // No results.
     res.redirect("catalog/authors");
   }
-
-  console.log(author);
-
+  
   res.render("author_delete", {
     title: "Delete Author",
     author: author,

@@ -24,14 +24,14 @@
               <label for="date_of_birth">Date of Birth: </label>
               <input type="date" name="date_of_birth" id="date_of_birth"
               class="form-control" 
-              value=<%= author ? author.date_of_birth : "" %> 
+              value=<%= author.date_of_birth ? author.date_of_birth.toISOString().split("T")[0] : "" %> 
               />
             </div>
             <div class="form-group">
               <label for="date_of_death">Date of Death: </label>
               <input type="date" name="date_of_death" id="date_of_death"
               class="form-control"
-              value=<%= author ? author.date_of_death : "" %> 
+              value=<%= author.date_of_death ? author.date_of_death.toISOString().split("T")[0] : "" %> 
               />
             </div>
             <button class="btn btn-primary" type="submit">Submit</button>

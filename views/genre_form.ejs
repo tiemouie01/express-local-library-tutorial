@@ -9,7 +9,7 @@
           <h1><%= title %></h1>
           <form method="post">
             <div class="form-group">
-              <label for="name">Genre: </label>
+              <label for="name">Genre: <%= genre.name %></label>
               <input
                 type="text"
                 name="name"
@@ -17,7 +17,7 @@
                 class="form-control"
                 placeholder="Fantasy, Poetry etc."
                 required
-                value=<%= genre === null  ? "" : genre.name %>
+                value="<%= genre === null  ? "" : genre.name %>"
               />
             </div>
             <button class="btn btn-primary" type="submit">Submit</button>

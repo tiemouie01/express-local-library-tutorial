@@ -39,6 +39,12 @@
             <%= bookinstance.due_back_formatted %>
            </p>
           <% } %>
+          <hr>
+          <p>
+            <a href=<%= `${bookinstance.url}/delete` %>>
+              Delete Book Instance
+            </a>
+          </p>
         </div>
       </div>
     </div>

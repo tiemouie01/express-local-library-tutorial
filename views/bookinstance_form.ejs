@@ -34,7 +34,7 @@
                 <label for="imprint">Imprint: </label>
                 <input type="text" id="imprint" class="form-control"
                   placeholder="Publisher date and information" name="imprint"
-                  required value=<%= bookinstance ? bookinstance.imprint : "" %>
+                  required value="<%= bookinstance ? bookinstance.imprint : "" %>"
                 >
             </div>
             <div class="form-group">
@@ -42,7 +42,7 @@
                   Date when book available:
                 </label>
                 <input type="date" id="due-back" class="form-control"
-                  name="due_back" value=<%= bookinstance ? bookinstance.due_back_yyyy_mm_dd : "" %>
+                  name="due_back" value="<%= bookinstance ? bookinstance.due_back.toISOString().split("T")[0] : "" %>"
                 >
             </div>
             <div class="form-group">
